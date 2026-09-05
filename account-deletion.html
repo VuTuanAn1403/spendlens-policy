@@ -3,27 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Hướng dẫn xóa tài khoản và dữ liệu SpendLens trong hoặc ngoài ứng dụng.">
+  <link rel="canonical" href="https://vutuanan1403.github.io/spendlens-policy/account-deletion.html">
   <title>Xóa tài khoản — SpendLens</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
-  <header class="site-header"><div class="container"><p class="eyebrow">BẢN NHÁP CHƯA PHÁT HÀNH</p><h1>Xóa tài khoản và dữ liệu SpendLens</h1><p>Cập nhật: 05/09/2026</p></div></header>
+  <header class="site-header"><div class="container"><h1>Xóa tài khoản và dữ liệu SpendLens</h1><p>Cập nhật: 05/09/2026</p></div></header>
   <nav aria-label="Điều hướng chính"><div class="container nav-links"><a href="index.html">Trang chính</a><a href="privacy-policy.html">Chính sách quyền riêng tư</a><a aria-current="page" href="account-deletion.html">Xóa tài khoản</a></div></nav>
   <main id="main" class="container content">
-    <section class="notice"><h2>Chưa phải URL production</h2><p>Nội dung liên hệ và SLA đã được xác nhận, nhưng trang này chưa đáp ứng public URL gate cho đến khi được deploy HTTPS và kiểm tra truy cập công khai.</p></section>
-
     <section><h2>Xóa trực tiếp trong ứng dụng</h2><ol><li>Đăng nhập đúng tài khoản SpendLens cần xóa.</li><li>Mở <strong>Cá nhân</strong>, cuộn tới <strong>Xóa tài khoản</strong>.</li><li>Nếu muốn giữ dữ liệu, tạo backup mã hóa trước.</li><li>Chọn <strong>Xóa tài khoản vĩnh viễn</strong>, nhập chính xác <code>XÓA</code> và reauthenticate bằng password trong ứng dụng.</li><li>Sau khi Firebase xác nhận xóa tài khoản, SpendLens dọn dữ liệu local của đúng owner.</li></ol><p>Guest dùng action <strong>Xóa toàn bộ dữ liệu trên thiết bị</strong>; thao tác này chỉ xóa dữ liệu Guest local và không gọi Firebase.</p></section>
 
-    <section><h2>Gửi yêu cầu ngoài ứng dụng</h2><p>Nếu không thể truy cập ứng dụng, gửi yêu cầu với tiêu đề “Yêu cầu xóa tài khoản SpendLens” từ chính địa chỉ email đã đăng ký tới:</p><p class="placeholder"><a href="mailto:vutuanan1403@gmail.com?subject=Y%C3%AAu%20c%E1%BA%A7u%20x%C3%B3a%20t%C3%A0i%20kho%E1%BA%A3n%20SpendLens">vutuanan1403@gmail.com</a></p><p>Chỉ cung cấp địa chỉ email tài khoản và yêu cầu xóa. <strong>Không gửi password, OTP, Auth token, App Check token, API key, backup password hoặc tệp hóa đơn/backup.</strong></p><h3>Quy trình xử lý</h3><ol><li>Người dùng gửi email yêu cầu xóa từ địa chỉ đã đăng ký.</li><li>Ann SpendLens đối chiếu địa chỉ người gửi với email của tài khoản Firebase Authentication.</li><li>Quyền sở hữu và nội dung yêu cầu được xác nhận trong cùng luồng email; không yêu cầu password, OTP hoặc token.</li><li>Tài khoản và dữ liệu liên quan do Ann SpendLens kiểm soát được xóa.</li><li>Thông báo hoàn tất được gửi lại cho người yêu cầu.</li></ol><p>Yêu cầu hợp lệ được xử lý trong vòng <strong>7 ngày làm việc</strong> sau khi quyền sở hữu tài khoản được xác minh.</p></section>
+    <section><h2>Gửi yêu cầu ngoài ứng dụng</h2><p>Bạn không cần cài đặt hoặc đăng nhập lại ứng dụng để dùng cách này. Gửi yêu cầu với tiêu đề “Yêu cầu xóa tài khoản SpendLens” từ chính địa chỉ email đã đăng ký tới:</p><p><a href="mailto:vutuanan1403@gmail.com?subject=Y%C3%AAu%20c%E1%BA%A7u%20x%C3%B3a%20t%C3%A0i%20kho%E1%BA%A3n%20SpendLens">vutuanan1403@gmail.com</a></p><p>Chỉ cung cấp địa chỉ email tài khoản và yêu cầu xóa. <strong>Không gửi password, OTP, Auth token, App Check token, API key, backup password hoặc tệp hóa đơn/backup.</strong></p><h3>Quy trình xử lý</h3><ol><li>Người dùng gửi email yêu cầu xóa từ địa chỉ đã đăng ký.</li><li>Nhà phát triển đối chiếu địa chỉ người gửi với email của tài khoản Firebase Authentication.</li><li>Quyền sở hữu và nội dung yêu cầu được xác nhận trong cùng luồng email; không yêu cầu password, OTP hoặc token.</li><li>Tài khoản và dữ liệu liên quan do nhà phát triển kiểm soát được xóa.</li><li>Thông báo hoàn tất được gửi lại cho người yêu cầu.</li></ol><p>Yêu cầu hợp lệ được xử lý trong vòng <strong>7 ngày làm việc</strong> sau khi quyền sở hữu tài khoản được xác minh.</p></section>
 
     <section><h2>Dữ liệu bị xóa</h2><ul><li>Tài khoản Firebase Authentication sau khi xác minh hợp lệ.</li><li>Khi xóa trong app: profile local, category, transaction, receipt metadata, budget, MerchantRule, AI insight, ảnh receipt/draft và metadata cảnh báo của owner hiện tại.</li><li>WorkManager/notification liên quan owner và kế hoạch restore tạm được dọn.</li></ul><p>Dữ liệu của owner khác không bị ảnh hưởng.</p></section>
 
     <section><h2>Giới hạn quan trọng</h2><p>Yêu cầu ngoài ứng dụng có thể xóa tài khoản/dữ liệu dịch vụ do nhà phát triển kiểm soát, nhưng website không thể từ xa xóa dữ liệu app-private đang nằm trên thiết bị không còn kết nối. Để xóa bản local trong trường hợp này, hãy dùng luồng xóa trong app trước khi mất quyền truy cập, hoặc xóa dữ liệu/gỡ ứng dụng trên thiết bị.</p><p>CSV và backup <code>.spendlens</code> do bạn đã xuất tới Downloads/document provider không thể bị SpendLens tự xóa; bạn phải tự xóa các bản sao đó. Firebase/Google có thể giữ log vận hành trong thời gian giới hạn theo điều khoản của họ.</p></section>
 
-    <section><h2>Liên hệ</h2><p>Nhà phát triển hiển thị: Ann. Cá nhân/pháp nhân: Ann SpendLens. Địa chỉ: [[ĐỊA CHỈ — CẦN CUNG CẤP NẾU ÁP DỤNG]]. Email: <a href="mailto:vutuanan1403@gmail.com">vutuanan1403@gmail.com</a>.</p></section>
+    <section><h2>Liên hệ</h2><p>Nhà phát triển hiển thị: Ann. Thương hiệu ứng dụng: Ann SpendLens. Email: <a href="mailto:vutuanan1403@gmail.com">vutuanan1403@gmail.com</a>.</p></section>
   </main>
   <footer><div class="container">SpendLens — không bao giờ yêu cầu password, OTP hoặc token qua email/trang web.</div></footer>
 </body>
