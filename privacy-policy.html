@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Chính sách quyền riêng tư — SpendLens</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+  <header class="site-header"><div class="container"><p class="eyebrow">BẢN NHÁP CHƯA PHÁT HÀNH</p><h1>Chính sách quyền riêng tư SpendLens</h1><p>Cập nhật: 05/09/2026</p></div></header>
+  <nav aria-label="Điều hướng chính"><div class="container nav-links"><a href="index.html">Trang chính</a><a aria-current="page" href="privacy-policy.html">Chính sách quyền riêng tư</a><a href="account-deletion.html">Xóa tài khoản</a></div></nav>
+  <main id="main" class="container content">
+    <section class="notice"><h2>Thông tin còn thiếu trước khi công khai</h2><p>Nhà phát triển hiển thị: Ann. Cá nhân/pháp nhân: Ann SpendLens. Địa chỉ liên hệ pháp lý: [[ĐỊA CHỈ — CẦN CUNG CẤP NẾU ÁP DỤNG]]. Email hỗ trợ: <a href="mailto:vutuanan1403@gmail.com">vutuanan1403@gmail.com</a>. URL này chưa phải URL production.</p></section>
+
+    <section><h2>1. Phạm vi</h2><p>Chính sách này mô tả cách SpendLens xử lý dữ liệu khi bạn quản lý chi tiêu, quét hóa đơn, đặt ngân sách, nhận cảnh báo, xuất CSV, tạo backup và sử dụng tài khoản hoặc gợi ý danh mục bằng AI.</p></section>
+
+    <section><h2>2. Dữ liệu được lưu trên thiết bị</h2><p>Room là nguồn dữ liệu chính của ứng dụng. Giao dịch, danh mục, ngân sách, metadata hóa đơn, quy tắc cửa hàng và insight đã lưu được phân vùng theo hồ sơ đang hoạt động. Ảnh hóa đơn và ảnh nháp nằm trong vùng riêng của ứng dụng; DataStore giữ thiết lập cảnh báo và trạng thái cần thiết cho việc xóa tài khoản.</p><p>Android Auto Backup và device transfer bị tắt cho dữ liệu SpendLens. Ứng dụng không đồng bộ dữ liệu tài chính qua Firestore, Firebase Storage hay Cloud Functions.</p></section>
+
+    <section><h2>3. Camera, ảnh và OCR</h2><p>Quyền Camera chỉ được hỏi khi bạn chủ động chụp hóa đơn. Bạn vẫn có thể dùng Photo Picker nếu không cấp Camera. ML Kit Text Recognition bundled xử lý ảnh trực tiếp trên thiết bị. Ảnh và raw OCR không được gửi trong luồng AI phân loại danh mục và không được lưu vào thư viện ảnh công khai.</p><p>Dù inference chạy on-device, ML Kit có thể gửi metrics chẩn đoán và usage analytics tới Google, gồm thông tin app/thiết bị, identifier theo installation, latency, cấu hình và kích thước input/output, event và error code. Theo tài liệu ML Kit, input ảnh/text và output OCR không được gửi; metrics được mã hóa qua HTTPS và không chuyển cho bên thứ ba.</p></section>
+
+    <section><h2>4. Firebase Authentication</h2><p>Nếu chọn tạo tài khoản Email/Password, email, tên hiển thị tùy chọn, credential và dữ liệu phiên được Firebase Authentication xử lý để tạo tài khoản, đăng nhập, xác minh email và khôi phục quyền truy cập. SpendLens không ghi password hay Auth token vào Room, DataStore, CSV hoặc backup. Bạn có thể dùng Guest mode mà không tạo tài khoản.</p></section>
+
+    <section><h2>5. App Check và Play Integrity</h2><p>Firebase App Check giúp xác minh request đến từ ứng dụng hợp lệ. Bản release dùng Play Integrity; Google/Firebase có thể xử lý attestation material, App Check token và tín hiệu toàn vẹn app/thiết bị theo cấu hình và điều khoản dịch vụ của họ. Debug provider chỉ dành cho build phát triển, không nằm trong bản release.</p></section>
+
+    <section><h2>6. Firebase AI Logic và Gemini</h2><p>SpendLens phân loại local-first: quy tắc cửa hàng và heuristic chạy trước. Chỉ khi kết quả cục bộ chưa đủ tin cậy, người dùng đã đăng nhập và dịch vụ khả dụng, ứng dụng mới có thể gửi merchant text đã giới hạn, note đã giới hạn, một khoảng tiền tổng quát, danh sách category được phép và locale <code>vi-VN</code> qua Firebase AI Logic tới Gemini Developer API.</p><p>Luồng này không gửi ảnh, raw OCR, URI/path, số tiền chính xác, UID, email, token, ID receipt/transaction hoặc toàn bộ lịch sử giao dịch. Response bị kiểm tra schema, confidence và allowlist. AI chỉ tạo gợi ý; bạn phải xác nhận trước khi lưu và luôn có thể chọn category thủ công.</p><p>Firebase AI Logic cho biết proxy của dịch vụ không tự lưu input/output, nhưng dữ liệu vẫn chịu điều khoản và retention của Gemini API provider; cấu hình monitoring của dự án cũng có thể ảnh hưởng việc lưu dữ liệu vận hành. [[CẦN XÁC NHẬN AI MONITORING/RETENTION PRODUCTION TRƯỚC KHI CÔNG KHAI]].</p></section>
+
+    <section><h2>7. Notification</h2><p>Quyền thông báo chỉ được hỏi sau thao tác chủ động trên Android 13 trở lên. WorkManager và DataStore xử lý cảnh báo ngân sách cục bộ; notification không chứa nội dung hóa đơn, email hay UID. Từ chối quyền không chặn chức năng quản lý chi tiêu.</p></section>
+
+    <section><h2>8. CSV và backup mã hóa</h2><p>CSV chỉ được tạo khi bạn chọn đích qua trình chọn tệp Android. CSV không chứa owner UID, raw OCR hoặc đường dẫn ảnh, nhưng vẫn có dữ liệu tài chính nên bạn phải tự bảo vệ và xóa tệp khi không cần.</p><p>Backup <code>.spendlens</code> dùng password do bạn nhập, PBKDF2-HMAC-SHA256 và AES-256-GCM. Password không được lưu; nếu quên password thì không thể khôi phục. SpendLens chỉ đọc/ghi URI do bạn chọn qua Storage Access Framework và không tự upload tệp.</p></section>
+
+    <section><h2>9. Quyền Android</h2><ul><li><strong>Camera:</strong> chụp hóa đơn theo yêu cầu.</li><li><strong>Internet:</strong> Firebase Authentication, App Check và AI fallback.</li><li><strong>Post notifications:</strong> cảnh báo ngân sách cục bộ.</li></ul><p>Ứng dụng không xin quyền bộ nhớ rộng, vị trí, danh bạ, SMS hay nhật ký cuộc gọi.</p></section>
+
+    <section><h2>10. Lưu giữ và xóa</h2><p>Dữ liệu Room/ảnh/DataStore được giữ trên thiết bị đến khi bạn xóa dữ liệu, replace bằng restore, xóa tài khoản/dữ liệu owner hoặc gỡ/xóa dữ liệu ứng dụng. Firebase Authentication và App Check áp dụng retention do Firebase công bố. Tệp CSV/backup đã xuất nằm ngoài quyền kiểm soát của SpendLens và phải do bạn tự xóa.</p><p>Xem <a href="account-deletion.html">hướng dẫn xóa tài khoản</a>. Yêu cầu xóa ngoài ứng dụng được xử lý trong vòng 7 ngày làm việc sau khi quyền sở hữu tài khoản được xác minh.</p></section>
+
+    <section><h2>11. Chia sẻ và bán dữ liệu</h2><p>SpendLens không bán dữ liệu và không có Ads, Firebase Analytics hay Crashlytics SDK. Google/Firebase xử lý dữ liệu cần thiết cho Authentication, App Check, AI Logic và ML Kit diagnostics/usage metrics theo điều khoản của họ. Không có Firestore, Storage, Functions hoặc cloud sync trong bản hiện tại.</p></section>
+
+    <section><h2>12. Liên hệ</h2><p>Nhà phát triển hiển thị: Ann. Cá nhân/pháp nhân: Ann SpendLens. Địa chỉ: [[ĐỊA CHỈ — CẦN CUNG CẤP NẾU ÁP DỤNG]]. Email hỗ trợ/quyền riêng tư: <a href="mailto:vutuanan1403@gmail.com">vutuanan1403@gmail.com</a>.</p></section>
+  </main>
+  <footer><div class="container">SpendLens — bản policy source chuẩn bị cho Google Play.</div></footer>
+</body>
+</html>
